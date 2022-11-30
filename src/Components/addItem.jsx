@@ -14,7 +14,7 @@ export default function AddItem ({ setToggle, toggle}){
             return 
         }
         const newItem = { food, protein, carbs, fats, calories}
-        fetch('http://127.0.0.1:5003/food',{
+        fetch('https://hosting-food-final-project-gd.web.app',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
