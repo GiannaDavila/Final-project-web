@@ -1,5 +1,6 @@
 import { Modal, Form, Input, Button } from 'antd';
 
+
 export default function AddItemModal({ isModalOpen, category, setIsModalOpen }) {
     const handleOk = () => {
         setIsModalOpen(false);
@@ -16,8 +17,11 @@ export default function AddItemModal({ isModalOpen, category, setIsModalOpen }) 
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(value)
+                }
+                .then(response => response.json())
+                .then(value)
+                .catch(err => console.error(err))
+                
             })
                 .then((response) => console.log("test", response))
         )
@@ -29,7 +33,6 @@ export default function AddItemModal({ isModalOpen, category, setIsModalOpen }) 
                 // initialValues={ {category} }
                 labelCol={{ span: 4 }}
                 wrapperCol={{ span: 14 }}
-                resetFields
                 layout="horizontal">
                 <Form.Item label='Category:' name='category'>
                     <Input defaultValue={category} />
