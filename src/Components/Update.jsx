@@ -1,33 +1,26 @@
-import { useState } from 'react'
 
-export default function UpdateCard ({ setToggle, toggle}) {
-    const [food, setFood] = useState('')
-    const [protein, setProtein] = useState('')
-    const [carbs, setCarbs] = useState('')
-    const [fats, setFats] = useState('')
-    const [calories, setCalories] = useState('')
-    const hanldeSubmit = (e) => {
-        e.preventDefault()
-        return (   
-    }
-    const updateItem = { food, protein, carbs, fats, calories }
-        fetch('https://hosting-food-final-project-gd.web.app',{
+
+export default function UpdateCard() {
+    const handleCancel = () => {
+        setIsModalOpen(false);
+    };
+    const updateItem = (values) => {
+        values.category = category
+        fetch('https://final-project-api-gd.web.app/food', {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(updateItem)
+            body: JSON.stringify(values)
         })
+        .then(response => response.json())
         .then(() => {
-            setToggle(!toggle)
-            setFood('')
-            setProtein('')
-            setCarbs('')
-            setFats('')
-            setCalories('')
+            setIsModalOpen(false)
         })
-        .catch(alert)
-        return(
-        )
-        )
+        .catch(err => console.log(err))
+    }
+    return (
+        onFinish={updateItem},
+        onCancel={handleCancel}
+    )
 }

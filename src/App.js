@@ -1,17 +1,16 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
-
 import Header from './Components/Header';
 import Footer from './Components/Footer';
-import HomePage from './pages/Home';
+import Cards from './Components/Cards';
+import "./App.css"
 
 
 function App() {
   return (
     <BrowserRouter>
     <Header/>
-    <HomePage/>
     <Routes>
-      <Route />
+      <Route path="/" element={<Cards/>} />
       <Route />
       <Route />
       <Route />
