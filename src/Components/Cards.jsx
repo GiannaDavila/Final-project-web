@@ -1,15 +1,30 @@
-import { Card} from 'antd';
-import { useState } from 'react';
+import { Card, List} from 'antd';
+import { useState, useEffect } from 'react';
 import { EditOutlined, DeleteOutlined, PlusOutlined } from '@ant-design/icons';
 import PostItemModal from './PostItemModal';
-
+import FoodList from './FoodList';
 
 export default function Cards() {
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [category, setCategory] = useState()
+    const [foods, setFoods] = useState();
     const showModal = () => {
         setIsModalOpen(true);
     };
+    useEffect(() => {
+        fetch("https://final-project-api-gd.web.app/food")
+            .then((res) => res.json())
+            .then((data) => setFoods(data))
+            .catch((err) => console.error(err));
+    }, [])
+    if (!foods) {
+        return <h1>Loading...</h1>
+    }
+    const BreakfastList = foods?.filter(item => item.category === "Breakfast")
+    const LunchList = foods?.filter(item => item.category === "Lunch")
+    const DinnerList = foods?.filter(item => item.category === "Dinner")
+    const SnackList = foods?.filter(item => item.category === "Snack")
+
     return (
         <>  {isModalOpen && <PostItemModal
             isModalOpen={isModalOpen}
@@ -29,7 +44,12 @@ export default function Cards() {
                         <DeleteOutlined key="delete" />
                     ]}
                 >
-                    <p>words</p>
+                    <List dataSource={BreakfastList} renderItem={(item) => {
+                        return (
+                        <FoodList food={item}/> 
+                        )
+                        
+                    }} />
                 </Card>
                 <Card
                     title="Lunch"
@@ -43,7 +63,11 @@ export default function Cards() {
                         <DeleteOutlined key="delete" />
                     ]}
                 >
-                    <p>Card content</p>
+                    <List dataSource={LunchList} renderItem={(item) => {
+                        return (
+                            <FoodList food={item}/> 
+                            )
+                    }} />
                 </Card>
                 <Card
                     title="Dinner"
@@ -57,7 +81,11 @@ export default function Cards() {
                         <DeleteOutlined key="delete" />
                     ]}
                 >
-                    <p>Card content</p>
+                    <List dataSource={DinnerList} renderItem={(item) => {
+                        return (
+                            <FoodList food={item}/> 
+                            )
+                    }} />
                 </Card>
                 <Card
                     title="Snack"
@@ -71,7 +99,11 @@ export default function Cards() {
                         <DeleteOutlined key="delete" />
                     ]}
                 >
-                    <p>Card content</p>
+                    <List dataSource={SnackList} renderItem={(item) => {
+                        return (
+                            <FoodList food={item}/> 
+                            )
+                    }} />
                 </Card>
             </div>
         </>
