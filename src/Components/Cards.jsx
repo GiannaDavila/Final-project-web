@@ -30,8 +30,8 @@ export default function Cards() {
             isModalOpen={isModalOpen}
             category={category}
             setIsModalOpen={setIsModalOpen} />}
-            <div className="cards">
-                <Card
+            <div className='cards'>
+                <Card className='Card1'
                     title="Breakfast"
                     hoverable
                     actions={[
@@ -42,16 +42,13 @@ export default function Cards() {
                         }} />,
                         <EditOutlined key="edit"/>,
                         <DeleteOutlined key="delete" />
-                    ]}
-                >
+                    ]}>
                     <List dataSource={BreakfastList} renderItem={(item) => {
                         return (
                         <FoodList food={item}/> 
-                        )
-                        
-                    }} />
+                        )}} />
                 </Card>
-                <Card
+                <Card className='Card2'
                     title="Lunch"
                     hoverable
                     actions={[
@@ -61,15 +58,13 @@ export default function Cards() {
                         }} />,
                         <EditOutlined key="edit" />,
                         <DeleteOutlined key="delete" />
-                    ]}
-                >
+                    ]}>
                     <List dataSource={LunchList} renderItem={(item) => {
                         return (
                             <FoodList food={item}/> 
-                            )
-                    }} />
+                            )}} />
                 </Card>
-                <Card
+                <Card className='Card3'
                     title="Dinner"
                     hoverable
                     actions={[
@@ -79,15 +74,13 @@ export default function Cards() {
                         }} />,
                         <EditOutlined key="edit" />,
                         <DeleteOutlined key="delete" />
-                    ]}
-                >
+                    ]}>
                     <List dataSource={DinnerList} renderItem={(item) => {
                         return (
                             <FoodList food={item}/> 
-                            )
-                    }} />
+                            )}} />
                 </Card>
-                <Card
+                <Card className='Card4'
                     title="Snack"
                     hoverable
                     actions={[
@@ -97,13 +90,11 @@ export default function Cards() {
                         }} />,
                         <EditOutlined key="edit" />,
                         <DeleteOutlined key="delete" />
-                    ]}
-                >
+                    ]}>
                     <List dataSource={SnackList} renderItem={(item) => {
                         return (
                             <FoodList food={item}/> 
-                            )
-                    }} />
+                            )}} />
                 </Card>
             </div>
         </>

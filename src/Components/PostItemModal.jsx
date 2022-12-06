@@ -1,5 +1,5 @@
-import { Modal, Form, Input, Button } from 'antd';
-
+import { Modal, Form, Input, Button, InputNumber } from 'antd';
+import { Link } from 'react-router-dom';
 
 export default function PostItemModal({ isModalOpen, category, setIsModalOpen }) {
     const handleCancel = () => {
@@ -22,29 +22,29 @@ export default function PostItemModal({ isModalOpen, category, setIsModalOpen })
 
     return (
         <Modal title={category+' Nutrition Facts'} 
-        // footer={null} 
         open={isModalOpen} 
         onCancel={handleCancel}
         >
-            <Form
+            <Form className='form'
                 onFinish={handleSubmit}
                 wrapperCol={{ span: 14 }}
                 >
                     <div className='form'>
                 <Form.Item label='Food:' name='food'>
+                    <Link to=""/> 
                     <Input />
                 </Form.Item>
                 <Form.Item label="Protein" name='protein'>
-                    <Input />
+                    <InputNumber />
                 </Form.Item>
                 <Form.Item label="Carbs" name='carbs'>
-                    <Input />
+                    <InputNumber />
                 </Form.Item>
                 <Form.Item label="Fats" name='fats'>
-                    <Input />
+                    <InputNumber />
                 </Form.Item>
                 <Form.Item label="Calories" name='calories'>
-                    <Input />
+                    <InputNumber />
                 </Form.Item>
                 <Button htmlType='submit' type="primary">Save</Button>
                 </div>
