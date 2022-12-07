@@ -1,7 +1,7 @@
 import { Modal, Form, Input, Button, InputNumber } from 'antd';
-import { Link } from 'react-router-dom';
 
-export default function PostItemModal({ isModalOpen, category, setIsModalOpen }) {
+
+export default function PostItemModal({ isModalOpen, category, setIsModalOpen, setFoods }) {
     const handleCancel = () => {
         setIsModalOpen(false);
       };
@@ -15,7 +15,12 @@ export default function PostItemModal({ isModalOpen, category, setIsModalOpen })
             body: JSON.stringify(values)
         })
             .then(response => response.json())
-            .then(values)
+            .then(() => {
+                fetch("https://final-project-api-gd.web.app/food")
+                .then(response => response.json())
+                .then((data) => setFoods(data))
+                .catch(err => console.error(err))
+            })
             .catch(err => console.error(err))
             setIsModalOpen(false);
     }
@@ -31,7 +36,6 @@ export default function PostItemModal({ isModalOpen, category, setIsModalOpen })
                 >
                     <div className='form'>
                 <Form.Item label='Food:' name='food'>
-                    <Link to=""/> 
                     <Input />
                 </Form.Item>
                 <Form.Item label="Protein" name='protein'>
@@ -46,7 +50,9 @@ export default function PostItemModal({ isModalOpen, category, setIsModalOpen })
                 <Form.Item label="Calories" name='calories'>
                     <InputNumber />
                 </Form.Item>
-                <Button htmlType='submit' type="primary">Save</Button>
+                <Button 
+                // onClick={() => {window.location.href=""}} 
+                htmlType='submit' type="primary">Save</Button>
                 </div>
             </Form>
         </Modal>

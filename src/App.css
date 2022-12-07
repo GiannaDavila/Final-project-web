@@ -29,6 +29,7 @@
   align-items: center;
   background-color: rgba(32, 36, 39, 0.881);
   display: flex;
+  /* color: aliceblue; */
   /* flex-direction: row; */
 }
 .Card2 {

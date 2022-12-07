@@ -18,7 +18,7 @@ export default function Cards() {
             .catch((err) => console.error(err));
     }, [])
     if (!foods) {
-        return <h1>Loading...</h1>
+        return <h1 style={{ color: "rgba(68, 79, 87, 0.881)"}}>Loading...</h1>
     }
     const BreakfastList = foods?.filter(item => item.category === "Breakfast")
     const LunchList = foods?.filter(item => item.category === "Lunch")
@@ -28,6 +28,7 @@ export default function Cards() {
     return (
         <>  {isModalOpen && <PostItemModal
             isModalOpen={isModalOpen}
+            setFoods={setFoods}
             category={category}
             setIsModalOpen={setIsModalOpen} />}
             <div className='cards'>
@@ -51,7 +52,7 @@ export default function Cards() {
                 <Card className='Card2'
                     title="Lunch"
                     hoverable
-                    actions={[
+                    actions={[ 
                         <PlusOutlined key="add" onClick={() => {
                             setCategory('Lunch')
                             showModal()

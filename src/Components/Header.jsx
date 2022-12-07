@@ -1,17 +1,14 @@
-import { Menu } from 'antd';
+import { Tabs } from 'antd';
+import Cards from '../Components/Cards';
 
-const App = () => (
-  <Menu mode="horizontal" defaultSelectedKeys={['home']} className="header">
-    <Menu.Item key="home">
-      Home
-    </Menu.Item>
-      <Menu.Item key="food">
-        Food
-      </Menu.Item>
-      <Menu.Item key="three" >
-        Exercise
-      </Menu.Item>
-      
-  </Menu>
+const Header = () => (
+  <Tabs defaultActiveKey="2">
+  <Tabs.TabPane tab="Home" key="1">
+
+  </Tabs.TabPane>
+  <Tabs.TabPane tab="Food" key="2">
+  <Cards/>
+  </Tabs.TabPane>
+</Tabs>
 );
-export default App;
+export default Header;
