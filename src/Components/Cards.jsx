@@ -1,14 +1,14 @@
-import { Card, List} from 'antd';
+import { Card, List } from 'antd';
 import { useState, useEffect } from 'react';
-import { EditOutlined, DeleteOutlined, PlusOutlined } from '@ant-design/icons';
+import { EditOutlined, PlusOutlined } from '@ant-design/icons';
 import PostItemModal from './PostItemModal';
 import FoodList from './FoodList';
-import DeleteCard from './Delete';
 
 export default function Cards() {
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [category, setCategory] = useState()
     const [foods, setFoods] = useState();
+    const [toggle, setToggle] = useState(false)
     const showModal = () => {
         setIsModalOpen(true);
     };
@@ -17,9 +17,9 @@ export default function Cards() {
             .then((res) => res.json())
             .then((data) => setFoods(data))
             .catch((err) => console.error(err));
-    }, [])
+    }, [toggle])
     if (!foods) {
-        return <h1 style={{ color: "rgba(68, 79, 87, 0.881)"}}>Loading...</h1>
+        return <h1 style={{ color: "rgba(68, 79, 87, 0.881)" }}>Loading...</h1>
     }
     const BreakfastList = foods?.filter(item => item.category === "Breakfast")
     const LunchList = foods?.filter(item => item.category === "Lunch")
@@ -37,36 +37,33 @@ export default function Cards() {
                     title="Breakfast"
                     hoverable
                     actions={[
-                        <PlusOutlined key="add" 
-                        onClick={() => {
-                            setCategory('Breakfast')
-                            showModal()
-                        }} />,
-                        <EditOutlined key="edit"/>,
-                        <DeleteOutlined key="delete"  onClick={() => {
-                            DeleteCard
-                        }}/>
+                        <PlusOutlined key="add"
+                            onClick={() => {
+                                setCategory('Breakfast')
+                                showModal()
+                            }} />,
+                        <EditOutlined key="edit" />,
                     ]}>
                     <List dataSource={BreakfastList} renderItem={(item) => {
                         return (
-                        <FoodList food={item}/> 
-                        )}} />
+                                <FoodList food={item} toggle={toggle} setToggle={setToggle} />)}} 
+                        />
                 </Card>
                 <Card className='Card2'
                     title="Lunch"
                     hoverable
-                    actions={[ 
+                    actions={[
                         <PlusOutlined key="add" onClick={() => {
                             setCategory('Lunch')
                             showModal()
                         }} />,
                         <EditOutlined key="edit" />,
-                        <DeleteOutlined key="delete" />
                     ]}>
                     <List dataSource={LunchList} renderItem={(item) => {
                         return (
-                            <FoodList food={item}/> 
-                            )}} />
+                            <FoodList food={item} toggle={toggle} setToggle={setToggle} />
+                        )
+                    }} />
                 </Card>
                 <Card className='Card3'
                     title="Dinner"
@@ -77,14 +74,12 @@ export default function Cards() {
                             showModal()
                         }} />,
                         <EditOutlined key="edit" />,
-                        // <DeleteOutlined key="delete" onClick={() => {
-                        //     showModal()
-                        // }}/>
                     ]}>
                     <List dataSource={DinnerList} renderItem={(item) => {
                         return (
-                            <FoodList food={item}/> 
-                            )}} />
+                            <FoodList food={item} toggle={toggle} setToggle={setToggle} />
+                        )
+                    }} />
                 </Card>
                 <Card className='Card4'
                     title="Snack"
@@ -95,12 +90,12 @@ export default function Cards() {
                             showModal()
                         }} />,
                         <EditOutlined key="edit" />,
-                        <DeleteOutlined key="delete" />
                     ]}>
                     <List dataSource={SnackList} renderItem={(item) => {
                         return (
-                            <FoodList food={item}/> 
-                            )}} />
+                            <FoodList food={item} toggle={toggle} setToggle={setToggle} />
+                        )
+                    }} />
                 </Card>
             </div>
         </>
