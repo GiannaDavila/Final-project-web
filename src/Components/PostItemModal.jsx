@@ -50,9 +50,7 @@ export default function PostItemModal({ isModalOpen, category, setIsModalOpen, s
                 <Form.Item label="Calories" name='calories'>
                     <InputNumber />
                 </Form.Item>
-                <Button 
-                // onClick={() => {window.location.href=""}} 
-                htmlType='submit' type="primary">Save</Button>
+                <Button htmlType='submit' type="primary">Save</Button>
                 </div>
             </Form>
         </Modal>

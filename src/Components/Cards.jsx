@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { EditOutlined, DeleteOutlined, PlusOutlined } from '@ant-design/icons';
 import PostItemModal from './PostItemModal';
 import FoodList from './FoodList';
+import DeleteCard from './Delete';
 
 export default function Cards() {
     const [isModalOpen, setIsModalOpen] = useState(false)
@@ -42,7 +43,9 @@ export default function Cards() {
                             showModal()
                         }} />,
                         <EditOutlined key="edit"/>,
-                        <DeleteOutlined key="delete" />
+                        <DeleteOutlined key="delete"  onClick={() => {
+                            DeleteCard
+                        }}/>
                     ]}>
                     <List dataSource={BreakfastList} renderItem={(item) => {
                         return (
@@ -74,7 +77,9 @@ export default function Cards() {
                             showModal()
                         }} />,
                         <EditOutlined key="edit" />,
-                        <DeleteOutlined key="delete" />
+                        // <DeleteOutlined key="delete" onClick={() => {
+                        //     showModal()
+                        // }}/>
                     ]}>
                     <List dataSource={DinnerList} renderItem={(item) => {
                         return (

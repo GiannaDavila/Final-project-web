@@ -27,26 +27,26 @@
 
 .Card1 {
   align-items: center;
-  background-color: rgba(32, 36, 39, 0.881);
+  background-color: rgba(32, 36, 39, 0.575);
   display: flex;
   /* color: aliceblue; */
   /* flex-direction: row; */
 }
 .Card2 {
   align-items: center;
-  background-color: rgba(32, 36, 39, 0.881);
+  background-color: rgba(32, 36, 39, 0.576);
   display: flex;
   /* flex-direction: row; */
 }
 .Card3 {
   align-items: center;
-  background-color: rgba(32, 36, 39, 0.881);
+  background-color: rgba(32, 36, 39, 0.577);
   display: flex;
   /* flex-direction: row; */
 }
 .Card4 {
   align-items: center;
-  background-color: rgba(32, 36, 39, 0.881);
+  background-color: rgba(32, 36, 39, 0.578);
   display: flex;
   /* flex-direction: row; */
 }
@@ -56,5 +56,5 @@
   flex-direction: column;
   /* align-items; */
   justify-content: center;
-  background-color: rgba(68, 79, 87, 0.881);
+  background-color: rgba(67, 75, 81, 0.246);
 }
