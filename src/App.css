@@ -1,60 +1,46 @@
-/* @import "antd/dist/antd.css"; */
-.App {
-  text-align: center;
-  background-color: rgba(32, 36, 39, 0.881);
-}
-
-.App-header {
-  background-color: #3265ca;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: rgb(120, 48, 48);
-}
-
 .header {
   background-color: rgba(32, 36, 39, 0.881);
 }
-
 .footer {
   text-align: center;
-  background-color: rgba(32, 36, 39, 0.881);
+  background-color: rgba(32, 36, 39, 0.575);
   color: aliceblue;
 }
-
-.Card1 {
-  align-items: center;
+.mainCardContainer{
   background-color: rgba(32, 36, 39, 0.575);
   display: flex;
-  /* color: aliceblue; */
-  /* flex-direction: row; */
-}
-.Card2 {
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
-  background-color: rgba(32, 36, 39, 0.576);
-  display: flex;
-  /* flex-direction: row; */
 }
-.Card3 {
+.cardSet{
+  width: 600px;
+  margin: 20px;
+}
+.ant-tabs-nav-wrap{
+  background-color: rgba(32, 36, 39, 0.575);
+}
+.ant-space{
+  background-color: rgba(32, 36, 39, 0.575);
+}
+.ant-tabs-tab-btn{
+  font-size: 20px;
+}
+.progressContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  background-color: rgba(32, 36, 39, 0.577);
-  display: flex;
-  /* flex-direction: row; */
 }
-.Card4 {
-  align-items: center;
-  background-color: rgba(32, 36, 39, 0.578);
-  display: flex;
-  /* flex-direction: row; */
-}
-
 .form {
   display: flex;
   flex-direction: column;
-  /* align-items; */
   justify-content: center;
-  background-color: rgba(67, 75, 81, 0.246);
+}
+.progressBar{
+  display: flex;
+  justify-content: center;
+  justify-content:space-around;
+  padding-left: 200px;
+  padding-right: 200px;
 }

@@ -1,8 +1,9 @@
 import { Card, List } from 'antd';
 import { useState, useEffect } from 'react';
-import { EditOutlined, PlusOutlined } from '@ant-design/icons';
+import { PlusOutlined } from '@ant-design/icons';
 import PostItemModal from './PostItemModal';
 import FoodList from './FoodList';
+import ProgressBar from './ProgressBar';
 
 export default function Cards() {
     const [isModalOpen, setIsModalOpen] = useState(false)
@@ -32,71 +33,77 @@ export default function Cards() {
             setFoods={setFoods}
             category={category}
             setIsModalOpen={setIsModalOpen} />}
-            <div className='cards'>
-                <Card className='Card1'
-                    title="Breakfast"
-                    hoverable
-                    actions={[
-                        <PlusOutlined key="add"
-                            onClick={() => {
-                                setCategory('Breakfast')
+            <ProgressBar />
+            <div className='mainCardContainer'>
+                <div className='cardSet'>
+                    <Card
+                        title="Breakfast"
+                        hoverable
+                        actions={[
+                            <PlusOutlined key="add"
+                                onClick={() => {
+                                    setCategory('Breakfast')
+                                    showModal()
+                                }} />
+                        ]}>
+                        <List dataSource={BreakfastList} renderItem={(item) => {
+                            return (
+                                <FoodList food={item} toggle={toggle} setToggle={setToggle} />
+                            )
+                        }} />
+                    </Card>
+                </div>
+                <div className='cardSet'>
+                    <Card
+                        title="Lunch"
+                        hoverable
+                        actions={[
+                            <PlusOutlined key="add" onClick={() => {
+                                setCategory('Lunch')
+                                showModal()
+                            }} />
+                        ]}>
+                        <List dataSource={LunchList} renderItem={(item) => {
+                            return (
+                                <FoodList food={item} toggle={toggle} setToggle={setToggle} />
+                            )
+                        }} />
+                    </Card>
+                </div>
+                <div className='cardSet'>
+                    <Card
+                        title="Dinner"
+                        hoverable
+                        actions={[
+                            <PlusOutlined key="add" onClick={() => {
+                                setCategory('Dinner')
                                 showModal()
                             }} />,
-                        <EditOutlined key="edit" />,
-                    ]}>
-                    <List dataSource={BreakfastList} renderItem={(item) => {
-                        return (
-                                <FoodList food={item} toggle={toggle} setToggle={setToggle} />)}} 
-                        />
-                </Card>
-                <Card className='Card2'
-                    title="Lunch"
-                    hoverable
-                    actions={[
-                        <PlusOutlined key="add" onClick={() => {
-                            setCategory('Lunch')
-                            showModal()
-                        }} />,
-                        <EditOutlined key="edit" />,
-                    ]}>
-                    <List dataSource={LunchList} renderItem={(item) => {
-                        return (
-                            <FoodList food={item} toggle={toggle} setToggle={setToggle} />
-                        )
-                    }} />
-                </Card>
-                <Card className='Card3'
-                    title="Dinner"
-                    hoverable
-                    actions={[
-                        <PlusOutlined key="add" onClick={() => {
-                            setCategory('Dinner')
-                            showModal()
-                        }} />,
-                        <EditOutlined key="edit" />,
-                    ]}>
-                    <List dataSource={DinnerList} renderItem={(item) => {
-                        return (
-                            <FoodList food={item} toggle={toggle} setToggle={setToggle} />
-                        )
-                    }} />
-                </Card>
-                <Card className='Card4'
-                    title="Snack"
-                    hoverable
-                    actions={[
-                        <PlusOutlined key="add" onClick={() => {
-                            setCategory('Snack')
-                            showModal()
-                        }} />,
-                        <EditOutlined key="edit" />,
-                    ]}>
-                    <List dataSource={SnackList} renderItem={(item) => {
-                        return (
-                            <FoodList food={item} toggle={toggle} setToggle={setToggle} />
-                        )
-                    }} />
-                </Card>
+                        ]}>
+                        <List dataSource={DinnerList} renderItem={(item) => {
+                            return (
+                                <FoodList food={item} toggle={toggle} setToggle={setToggle} />
+                            )
+                        }} />
+                    </Card>
+                </div>
+                <div className='cardSet'>
+                    <Card
+                        title="Snack"
+                        hoverable
+                        actions={[
+                            <PlusOutlined key="add" onClick={() => {
+                                setCategory('Snack')
+                                showModal()
+                            }} />
+                        ]}>
+                        <List dataSource={SnackList} renderItem={(item) => {
+                            return (
+                                <FoodList food={item} toggle={toggle} setToggle={setToggle} />
+                            )
+                        }} />
+                    </Card>
+                </div>
             </div>
         </>
     )
