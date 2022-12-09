@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom'
 export default function FoodList({ food, toggle, setToggle }) {
     const navigate = useNavigate();
 
-
     function deleteCard(id, toggle, setToggle) {
         fetch('https://final-project-api-gd.web.app/food/' + id, {
             method: 'DELETE',
@@ -20,7 +19,7 @@ export default function FoodList({ food, toggle, setToggle }) {
 
     return (
         <List.Item>
-            <h4>{food.food}</h4>
+            <h4>{food.food.charAt(0).toUpperCase()+food.food.slice(1)}</h4>
             <div />
             <h6>Protein:{food.protein}   </h6>
             <div />
