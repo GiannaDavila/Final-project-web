@@ -10,13 +10,31 @@ export default function Cards() {
     const [category, setCategory] = useState()
     const [foods, setFoods] = useState();
     const [toggle, setToggle] = useState(false)
+    const [totalProtein, setTotalProtein] = useState([])
+    const [totalCarbs, setTotalCarbs] = useState([])
+    const [totalFats, setTotalFats] = useState([])
+    const [totalCalories, setTotalCalories] = useState([])
     const showModal = () => {
         setIsModalOpen(true);
     };
     useEffect(() => {
+        if (foods?.length){        
+            const _totalProtein = foods.reduce((acumm, food) => acumm + food.protein, 0)
+            setTotalProtein(_totalProtein)
+            const _totalCarbs = foods.reduce((acumm, food) => acumm + food.carbs, 0)
+            setTotalCarbs(_totalCarbs)
+            const _totalFats = foods.reduce((acumm, food) => acumm + food.fats, 0)
+            setTotalFats(_totalFats)
+            const _totalCaloires = foods.reduce((acumm, food) => acumm + food.calories, 0)
+            setTotalCalories(_totalCaloires)
+        }
+    }, [foods])
+    useEffect(() => {
         fetch("https://final-project-api-gd.web.app/food")
             .then((res) => res.json())
-            .then((data) => setFoods(data))
+            .then((data) => {
+                setFoods(data)
+            })
             .catch((err) => console.error(err));
     }, [toggle])
     if (!foods) {
@@ -33,7 +51,7 @@ export default function Cards() {
             setFoods={setFoods}
             category={category}
             setIsModalOpen={setIsModalOpen} />}
-            <ProgressBar />
+            <ProgressBar totalProtein={totalProtein}  totalCarbs={totalCarbs} totalFats={totalFats} totalCalories={totalCalories}/>
             <div className='mainCardContainer'>
                 <div className='cardSet'>
                     <Card
@@ -48,7 +66,7 @@ export default function Cards() {
                         ]}>
                         <List dataSource={BreakfastList} renderItem={(item) => {
                             return (
-                                <FoodList food={item} toggle={toggle} setToggle={setToggle} />
+                                <FoodList totalProtein={totalProtein} setTotalProtein={setTotalProtein} food={item} toggle={toggle} setToggle={setToggle} />
                             )
                         }} />
                     </Card>
