@@ -53,10 +53,17 @@ body{
   background-color: #272262;
 }
 
+
+
 .ant-progress-text{
   color: white !important;
 }
+.ant-progress-status-success .ant-progress-text {
+  color: #5bff09 !important;
+}
+
 
 .ant-tabs-tab-btn{
   color: white;
+
 }
