@@ -1,6 +1,6 @@
 import { Card, List } from 'antd';
 import { useState, useEffect } from 'react';
-import { PlusOutlined } from '@ant-design/icons';
+import { PlusOutlined, LoadingOutlined  } from '@ant-design/icons';
 import PostItemModal from './PostItemModal';
 import FoodList from './FoodList';
 import ProgressBar from './ProgressBar';
@@ -38,7 +38,7 @@ export default function Cards() {
             .catch((err) => console.error(err));
     }, [toggle])
     if (!foods) {
-        return <h1 style={{ color: "rgba(68, 79, 87, 0.881)" }}>Loading...</h1>
+        return <LoadingOutlined style={{ fontSize: 50, alignItems: "center" }} />
     }
     const BreakfastList = foods?.filter(item => item.category === "Breakfast")
     const LunchList = foods?.filter(item => item.category === "Lunch")

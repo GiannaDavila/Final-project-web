@@ -1,13 +1,18 @@
+body{
+  background-color: #272262;
+  color: white !important;
+}
+
 .header {
-  background-color: rgba(32, 36, 39, 0.881);
+  background-color: rgba(32, 36, 39, 0.459);
 }
 .footer {
   text-align: center;
-  background-color: rgba(32, 36, 39, 0.575);
+  background-color: #272262;
   color: aliceblue;
 }
 .mainCardContainer{
-  background-color: rgba(32, 36, 39, 0.575);
+  background-color: #272262;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -16,12 +21,13 @@
 .cardSet{
   width: 600px;
   margin: 20px;
+  background-color: #272262;
 }
 .ant-tabs-nav-wrap{
-  background-color: rgba(32, 36, 39, 0.575);
+  background-color: #272262;
 }
 .ant-space{
-  background-color: rgba(32, 36, 39, 0.575);
+  background-color: #272262;
 }
 .ant-tabs-tab-btn{
   font-size: 20px;
@@ -31,6 +37,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: aliceblue;
 }
 .form {
   display: flex;
@@ -43,4 +50,13 @@
   justify-content:space-around;
   padding-left: 200px;
   padding-right: 200px;
+  background-color: #272262;
+}
+
+.ant-progress-text{
+  color: white !important;
+}
+
+.ant-tabs-tab-btn{
+  color: white;
 }

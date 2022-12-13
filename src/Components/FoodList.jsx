@@ -19,15 +19,15 @@ export default function FoodList({ food, toggle, setToggle }) {
 
     return (
         <List.Item>
-            <h4>{food.food.charAt(0).toUpperCase()+food.food.slice(1)}</h4>
+            <h3>{food.food.charAt(0).toUpperCase()+food.food.slice(1)}</h3>
             <div />
-            <h6>Protein:{food.protein}   </h6>
+            <h4>Protein:{food.protein}   </h4>
             <div />
-            <h6>Carbs:{food.carbs}  </h6>
+            <h4>Carbs:{food.carbs}  </h4>
             <div />
-            <h6>Fats:{food.fats}    </h6>
+            <h4>Fats:{food.fats}    </h4>
             <div />
-            <h6>Cals:{food.calories}    </h6>
+            <h4>Cals:{food.calories}    </h4>
             <MinusCircleOutlined onClick={() => deleteCard(food._id, toggle, setToggle)} />
         </List.Item>
     )
